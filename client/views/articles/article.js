@@ -4,17 +4,28 @@ Template.Article.onCreated(function () {
 })
 
 Template.Article.helpers({
-  articleId () {
+  articleId() {
     return this._id
   },
-  summaryView () {
+  summaryView() {
     return Template.instance().summaryView.get()
   },
-  editMode () {
+  editMode() {
     return Template.instance().editMode.get()
   },
-  isOwner () {
+  isOwner() {
     return this.author === Meteor.userId()
+  },
+  randomImage() {
+    var images = ['https://cdn-images-1.medium.com/fit/t/800/240/1*UDlNMt246MU0xby_XXqguw.jpeg',
+      'https://cdn-images-1.medium.com/fit/t/800/240/1*XyWRLiuyXWbLquDcJXvpMQ.jpeg',
+      'https://cdn-images-1.medium.com/focal/800/240/28/46/1*138NYR7mJTvQOWPGoyLg-g.jpeg',
+      'https://cdn-images-1.medium.com/focal/800/240/36/9/1*AURMiMzWP22gUsi9sGNcPg.jpeg',
+      'https://cdn-images-1.medium.com/fit/t/800/240/0*d5CVxiz8p1PizsgL.jpg',
+      'https://cdn-images-1.medium.com/fit/t/800/240/1*722H7nWsDQ0D-ReOKoRytQ.jpeg'
+    ]
+    var index = Math.floor(Math.random() * images.length)
+    return images[index]
   }
 })
 

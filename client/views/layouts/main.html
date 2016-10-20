@@ -1,0 +1,22 @@
+<template name="MainLayout">
+  <header>
+    <nav class="navbar navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/images/medium_logo.png" width="20" height="20" class="d-inline-block align-top" alt="">
+          Medium
+        </a>
+        <ul class="nav navbar-nav">
+          <li class="nav-item pull-xs-right text-muted">
+              {{> loginButtons align="right"}}
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container main">
+    <!--  we can use template dynamic like a yield statement-->
+    {{> Template.dynamic template=templateToRender}}
+  </main>
+</template>

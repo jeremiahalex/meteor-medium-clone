@@ -1,21 +1,43 @@
 /* CSS declarations go here */
-
-.card {
-    max-width: 660px;
+html, body {
+  background-color: #fafafa !important;
 }
-
 .navbar {
   background-color: white;
-  border-bottom: 1px solid rgba(0,0,0,.2);
+  border-bottom: 1px solid lightgrey;
 }
-.main {
-  margin-top: 20px;
+.form-control {
+  border: 0 !important;
+}
+.article-title {
+  font-size: 1.5rem;
+}
+.btn-primary {
+  background-color: #02b875;
+  border: 1px solid grey;
+  border-radius: 20px;
 }
 
-span.help-block {
+.form-group button {
+  float: right;
+}
+
+.help-block {
   color: darkred;
 }
-
-body {
-  background: #fafafa;
+.card {
+  /*max-width: 660px;*/
+}
+.progress {
+  max-width: 660px;
+}
+.recommendations {
+  padding-top: 20px;
+}
+ul {
+  padding-left: 10px;
+}
+li {
+  list-style: none;
+  margin: 0;
 }

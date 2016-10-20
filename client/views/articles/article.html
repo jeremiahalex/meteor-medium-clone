@@ -1,24 +1,24 @@
 <template name="Article">
   <div class="card">
-    <img class="card-img-top" style="width: 100%; padding: 20px 20px 0 20px" src="https://cdn-images-1.medium.com/fit/t/800/240/1*XyWRLiuyXWbLquDcJXvpMQ.jpeg" alt="Card image cap">
+    <img class="card-img-top" style="width: 100%; padding: 20px 20px 0 20px" src="{{randomImage}}" alt="Card image cap">
     <div class="card-block">
-
       {{#if editMode }}
         <button type="button" class="close" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        {{> quickForm validation="blur" collection="Articles" resetOnSuccess=true id=articleId type="update" doc=this autosave=true class=""}}
+        {{> quickForm collection="Articles" id=articleId type="update" doc=this autosave=true}}
       {{else}}
           {{#if isOwner }}
-            <h4 class="card-title">{{title}}
+            <h4 class="card-title"><a href="/{{_id}}">{{title}}</a>
               <small><i class="fa fa-pencil edit-article"></i> <i class="fa fa-trash delete-article"></i></small>
             </h4>
           {{else}}
-            <h4 class="card-title">{{title}}</h4>
+            <h4 class="card-title"><a href="/{{_id}}">{{title}}</a></h4>
           {{/if}}
           {{#if summaryView }}
-            <p class="card-text">{{summary}}</p>
-            <p class="card-text"><small class="text-muted read-more">Read more...</small></p>
+            <p class="card-text">{{summary}} </p>
+            <p class="card-text"><small class="text-muted read-more">Read more...</small>
+            </p>
           {{else}}
             <p class="card-text">{{body}}</p>
           {{/if}}

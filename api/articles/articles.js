@@ -1,32 +1,27 @@
 Articles = new Mongo.Collection('articles')
-
-if (Meteor.isServer) {
-  Meteor.publish('articles', function () {
-    return Articles.find({})
-  })
-}
-
-Articles.allow({
-  // who is allowed to insert a record - any one who is logged in for now
-  insert: function (userId, doc) {
-    return !!userId
-  },
-  update: function (userId, doc) {
-    return userId === doc.author
-  }
-})
 const ArticleSchema = new SimpleSchema({
   title: {
     type: String,
     label: 'Title',
     max: 50,
-    min: 5
+    min: 5,
+    autoform: {
+      placeholder: 'Title',
+      class: 'article-title',
+      label: false
+    }
   },
   body: {
     type: String,
     label: 'Body',
     max: 500,
-    min: 100
+    min: 100,
+    autoform: {
+      placeholder: 'Tell your story...',
+      class: 'article-body',
+      label: false,
+      cols: 3
+    }
   },
   summary: {
     type: String,
@@ -52,6 +47,16 @@ const ArticleSchema = new SimpleSchema({
       type: 'hidden'
     }
   },
+  featured: {
+    type: Boolean,
+    autoValue: function () {
+      // for testing purposes we just randomly feature articles
+      return Math.random() < 0.3
+    },
+    autoform: {
+      type: 'hidden'
+    }
+  },
   createdAt: {
     type: Date,
     label: 'Created',
@@ -61,6 +66,17 @@ const ArticleSchema = new SimpleSchema({
     autoform: {
       type: 'hidden'
     }
+  }
+})
+Articles.attachSchema(ArticleSchema)
+
+Articles.allow({
+  // who is allowed to insert a record - any one who is logged in for now
+  insert: function (userId, doc) {
+    return !!userId
+  },
+  update: function (userId, doc) {
+    return userId === doc.author
   }
 })
 
@@ -74,5 +90,3 @@ Meteor.methods({
     Articles.remove(articleId)
   }
 })
-
-Articles.attachSchema(ArticleSchema)

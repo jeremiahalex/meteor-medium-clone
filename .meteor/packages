@@ -19,8 +19,8 @@ ecmascript@0.5.8_1              # Enable ECMAScript2015+ syntax in app code
 shell-server@0.2.1            # Server-side component of the `meteor shell` command
 
 # Useful Packages
-# kadira:flow-router              # for routing
-# kadira:blaze-layout             # for shared templates layouts
+kadira:flow-router              # for routing
+kadira:blaze-layout             # for shared templates layouts
 raix:handlebar-helpers          # allows us to accept the session in $
 aldeed:collection2              # needed for autoform
 aldeed:autoform                 # automatically create a form for a collection
