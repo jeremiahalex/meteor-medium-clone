@@ -42,7 +42,7 @@ Template.Article.events({
   'click .close': function (event, templateInstance) {
     templateInstance.editMode.set(false)
   },
-  'submit #9xLSup8LwLyttRShJ': function (event, template) {
+  'submit form': function (event, template) {
     Template.instance().editMode.set(false)
   }
 })

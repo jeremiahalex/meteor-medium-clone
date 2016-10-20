@@ -25,12 +25,6 @@ html, body {
 .help-block {
   color: darkred;
 }
-.card {
-  /*max-width: 660px;*/
-}
-.progress {
-  max-width: 660px;
-}
 .recommendations {
   padding-top: 20px;
 }

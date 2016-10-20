@@ -6,7 +6,7 @@
         <button type="button" class="close" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        {{> quickForm collection="Articles" id=articleId type="update" doc=this autosave=true}}
+        {{> quickForm collection="Articles" id=articleId type="update" doc=this}}
       {{else}}
           {{#if isOwner }}
             <h4 class="card-title"><a href="/{{_id}}">{{title}}</a>

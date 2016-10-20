@@ -1,4 +1,17 @@
 Articles = new Mongo.Collection('articles')
+
+Articles.allow({
+  // who is allowed to insert a record - any one who is logged in for now
+  insert: function (userId, doc) {
+    console.log('allow insert', userId, doc.author)
+    return !!userId
+  },
+  update: function (userId, doc) {
+    console.log('allow update', userId, doc.author)
+    return userId === doc.author
+  }
+})
+
 const ArticleSchema = new SimpleSchema({
   title: {
     type: String,
@@ -28,9 +41,8 @@ const ArticleSchema = new SimpleSchema({
     label: 'Summary',
     optional: true,
     autoValue: function () {
-      if (!description) return ''
-      var description = this.siblingField('body')
-        .value
+      var description = this.siblingField('body').value
+      if (!description) return '...'
       return description.substring(0, 100)
     },
     autoform: {
@@ -49,13 +61,14 @@ const ArticleSchema = new SimpleSchema({
   },
   featured: {
     type: Boolean,
-    autoValue: function () {
-      // for testing purposes we just randomly feature articles
-      return Math.random() < 0.3
-    },
-    autoform: {
-      type: 'hidden'
-    }
+    label: 'Featured',
+    // autoValue: function () {
+    //   // for testing purposes we just randomly feature articles
+    //   return Math.random() < 0.3
+    // },
+    // autoform: {
+    //   type: 'hidden'
+    // }
   },
   createdAt: {
     type: Date,
@@ -69,16 +82,6 @@ const ArticleSchema = new SimpleSchema({
   }
 })
 Articles.attachSchema(ArticleSchema)
-
-Articles.allow({
-  // who is allowed to insert a record - any one who is logged in for now
-  insert: function (userId, doc) {
-    return !!userId
-  },
-  update: function (userId, doc) {
-    return userId === doc.author
-  }
-})
 
 Meteor.methods({
   removeArticle: function (articleId) {
