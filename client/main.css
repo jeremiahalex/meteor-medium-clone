@@ -1,0 +1,21 @@
+/* CSS declarations go here */
+
+.card {
+    max-width: 660px;
+}
+
+.navbar {
+  background-color: white;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+}
+.main {
+  margin-top: 20px;
+}
+
+span.help-block {
+  color: darkred;
+}
+
+body {
+  background: #fafafa;
+}

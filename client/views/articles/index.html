@@ -1,0 +1,26 @@
+<template name="Articles">
+  {{#if currentUser}}
+    {{#if $.Session.get 'addMode' }}
+      {{> NewArticle}}
+    {{else}}
+      <div class="card new-article" style="max-width: 660px;">
+        <div class="card-block">
+          <p class="card-text"><small class="text-muted">Write here...</small></p>
+        </div>
+      </div>
+    {{/if}}
+  {{else}}
+    <p>
+      Medium is home to the world’s curious minds. From the clever to the controversial, find ideas worth making time for.
+    </p>
+  {{/if}}
+  <section class="articles">
+    {{#if Template.subscriptionsReady}}
+      {{#each articles}}
+        {{> Article}}
+      {{/each}}
+    {{else}}
+      <progress class="progress progress-striped progress-info" value="100" max="100"></progress>
+    {{/if}}
+  </section>
+</template>

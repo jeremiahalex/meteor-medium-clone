@@ -1,0 +1,10 @@
+<template name="NewArticle">
+  <div class="card" style="max-width: 660px;">
+    <div class="card-block">
+      <button type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{> quickForm collection="Articles" id="insertArticleForm" type="insert" class=""}}
+    </div>
+  </div>
+</template>
